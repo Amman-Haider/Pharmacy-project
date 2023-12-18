@@ -278,7 +278,74 @@ int main() {
                 break;
             }
 
+         case 6: { 
+                 cout << "Available snacks:\n1. lays\n2. kurkure\n3. kurleez\n"
+                     << "4. cheetos\n5. dairymilk\n6. oreo\n7. PRINCE BUISCIT\n8. slanty\n"
+                     << "9. ding dong bubble\n10. tuc biscuit\n11. rio biscuit\n12.Exit" << endl;
 
+                int snackType;
+                cout << "Enter your choice (1-12): ";
+                cin >> snackType;
+
+                string snacks;
+                double price;
+
+                switch (snackType) {
+                    case 1:
+                        snacks = "LAYS";
+                        price = 50.99;
+                        break;
+                    case 2:
+                        snacks = "kurkure";
+                        price = 30.99;
+                        break;
+                    case 3:
+                        snacks = "kurleez";
+                        price = 30.99;
+                        break;
+                    case 4:
+                        snacks = "cheetos";
+                        price = 1499.99;
+                        break;
+                    case 5:
+                        snacks = "dairymilk";
+                        price = 20.99;
+                        break;
+                    case 6:
+                        snacks = "oreo";
+                        price = 40.99;
+                        break;
+                    case 7:
+                        snacks = "prince BISCUIT";
+                        price = 3499.99;
+                        break;
+                    case 8:
+                        snacks ="slanty";
+                        price = 799.99;
+                        break;
+                    case 9:
+                        snacks = "ding dong bubble";
+                        price = 2999.99;
+                        break;
+                    case 10:
+                        snacks = "tuc biscuit";
+                        price = 1599.99;
+                        break;
+                    case 11:
+                    	snacks ="rio biscuit";
+                    	price = 30.99;
+                    case 12:
+                        break; // Exit the snacks list 
+                    default:
+                        cout << "Invalid choice!" << endl;
+                        continue;
+                }
+
+                cout << "You need " << snacks << ". Price: Rs." << price << endl;
+                totalAmount += price;
+                break;  
+ 	
+ } 
 case 7: {
                 cout << "Common types of baby care items:\n1. Pampers\n2. Cerelac\n3. BF1\n"
                      << "4. Feeder\n5. Pacifier\n6. Bibs\n7. Baby Oil\n8. Baby Lotion\n9. Baby Shampoo\n10. Baby Powder\n11. Baby Wipes\n12. Exit" << endl;
