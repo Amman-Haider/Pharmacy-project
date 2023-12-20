@@ -2,15 +2,26 @@
 #include <string>
 
 using namespace std;
+// Global declaration
+double price;
+double totalAmount;
+
+void Bill(double price) // void doesn't return anything
+{
+    totalAmount=price+totalAmount;
+}
+double invoice()//returns total invoice
+{
+    return totalAmount;
+}
 
 int main() {
-    double totalAmount = 0.0;
 
     do {
         int category;
          cout<<"\n\n\t\t\t    Pharmacy Management System \n";
-	cout<<"\t\t==================================================\n\n";
-	cout<<"\t\t--------------------------------------------------\n";
+	    cout<<"\t\t==================================================\n\n";
+	    cout<<"\t\t--------------------------------------------------\n";
         cout << "\t\t||\tWelcome to the Pharmacy!\t ||\n" ;
         cout << "\t\t||\tWhat are you looking for?\t ||\n" ;
         cout << "\t\t||\t1. Medicine\t\t\t ||\n" ;
@@ -88,7 +99,7 @@ int main() {
                 cout<<"\t\t------------------------------------\n";
              cout << "\t\t|| You need\t[\t" << medicine <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
-                totalAmount += price;
+                Bill(price);
                 break;
             }
         
@@ -153,7 +164,7 @@ int main() {
                 cout<<"\t\t------------------------------------\n";
              cout << "\t\t|| You need\t[\t" << skincare <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
-                totalAmount += price;
+                Bill(price);
                 break;
             }
         
@@ -197,7 +208,7 @@ int main() {
             cout<<"\t\t------------------------------------\n";
              cout << "\t\t|| You need\t[\t" << makeupoptions <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
-                totalAmount += price;
+                Bill(price);
                 break;
 
     }                  
@@ -259,7 +270,7 @@ int main() {
                 cout<<"\t\t------------------------------------\n";
              cout << "\t\t|| You need\t[\t" << supplement <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
-                totalAmount += price;
+                Bill(price);
                 break;
             }
             case 5: {
@@ -333,7 +344,7 @@ int main() {
                 cout<<"\t\t------------------------------------\n";
              cout << "\t\t|| You need\t[\t" << equipment <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
-                totalAmount += price;
+                Bill(price);
                 break;
             }
 
@@ -407,6 +418,7 @@ int main() {
                     case 11:
                     	snacks ="rio biscuit";
                     	price = 30.99;
+
                     case 12:
                         break; // Exit the snacks list 
                     default:
@@ -415,9 +427,9 @@ int main() {
                 }
 
                 cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[\t" << snacks <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
-             cout<<"\t\t------------------------------------\n";
-                totalAmount += price;
+                cout << "\t\t|| You need\t[\t" << snacks <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+                cout<<"\t\t------------------------------------\n";
+                Bill(price);
                 break;  
  	
  } 
@@ -502,16 +514,10 @@ case 7: {
                 cout<<"\t\t------------------------------------\n";
                 cout << "\t\t|| You need\t[\t" << supplements <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
                 cout<<"\t\t------------------------------------\n";
-                totalAmount += price;
+                Bill(price);
                 break;
             }
             
-
-            case 8: {
-                cout<<"\t\t--------------------------------------------------\n";
-                cout << "||\tThank you for using the Pharmacy system!\t\t || \n\t || Your total amount is : RS." << totalAmount <<"\t||"<< endl;
-                return 0;
-            }
 
             default:
                 cout << "Invalid choice!" << endl;
@@ -519,15 +525,45 @@ case 7: {
         }
 
         char choice;
+        
         cout << "Do you want anything else? (y/n): ";
         cin >> choice;
 
         if (choice != 'y' && choice != 'Y') {
-             cout<<"\t\t-------------------------------------------------------------\n";
-             
-            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t || \n\t\t||Your total amount is :[ RS." << totalAmount <<" ]\t\t\t||"<< endl;
+            cout<<"Type of customer"<<endl ;
+            cout<<"1. Pickup"<<endl ;
+            cout<<"2. Deliver to address"<<endl;
+        int choice;
+        cin >> choice;
+        string email,address,phone;
+            if (choice ==1){
+                
+            cout<<"\t\t-------------------------------------------------------------\n";
+            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t || \n\t\t||Your total amount is :[ RS." << invoice() <<" ]\t\t\t||"<< endl;
             cout<<"\t\t-------------------------------------------------------------\n";
             return 0;
+
+            }
+            else if(choice==2)
+            {   
+                cout<<"Enter your email :";
+                cin>>email;
+                cout<<"Enter your Address :";
+                cin>>address;
+                cout<<"Enter your Phone number :";
+                cin>>phone;
+                
+                double Deliverycharges=150;
+                Bill(Deliverycharges);
+                
+            cout<<"\t\t-------------------------------------------------------------\n";
+            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t || \n\t\t||Your total amount is :[ RS." << invoice() <<"  With Delivery"<<" ] \t "<<"\t\t||"<< endl;
+            cout<<"\t\t-------------------------------------------------------------\n";
+            cout<<"\t\t||WILL BE DELIVIRED AT\t||"<<endl;
+            cout<<"\t\t||EMAIL : "<<email<<"\t||"<<"\n"<<"\t\t||Address :"<<address<<"\t||"<<"\n\t\t||Phone Number :"<<phone<<"\t||"<<endl; 
+            cout<<"\t\t-------------------------------------------------------------\n";
+            return 0;
+            }
         }
 
      }
