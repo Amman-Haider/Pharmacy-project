@@ -30,8 +30,20 @@ int main() {
         switch (category) {
                 case 1: {
                 int symptom;
-                cout << "Select the symptoms:\n1. Fever\n2. Cough\n3. Flu\n4. Upset Stomach\n5. Vomitting\n6. Pain\n7. Eye Infection\n8. Exit" << endl;
-                cout << "Enter your choice (1-7): ";
+                cout<<"\t\t--------------------------------------------------\n";
+                cout<<"\t\t--------------------------------------------------\n";
+                cout << "\t\t||\tSelect the symptoms:"<<endl;
+                cout << "\t\t||\t1. Fever\t\t\t ||"<< endl;
+                cout << "\t\t||\t2. Cough\t\t\t ||"<< endl;
+                cout << "\t\t||\t3. Flu\t\t\t\t ||"<< endl;
+                cout << "\t\t||\t4. Upset Stomach\t\t ||"<< endl;
+                cout << "\t\t||\t5. Vomitting\t\t\t ||"<< endl;
+                cout << "\t\t||\t6. Pain\t\t\t\t ||"<< endl;
+                cout << "\t\t||\t7. Eye Infection\t\t ||"<< endl;
+                cout << "\t\t||\t8. Exit\t\t\t\t ||" <<endl;
+                cout<<"\t\t--------------------------------------------------\n";
+                cout<<"\t\t--------------------------------------------------\n";
+                cout << "\tEnter your choice (1-8): ";
                 cin >> symptom;
 
                 string medicine;
@@ -73,16 +85,30 @@ int main() {
                         continue;
                 }
 
-                cout << "You need " << medicine << ". Price: Rs." << price << endl;
+                cout<<"\t\t------------------------------------\n";
+             cout << "\t\t|| You need\t[\t" << medicine <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout<<"\t\t------------------------------------\n";
                 totalAmount += price;
                 break;
             }
         
             case 2: {
                 int skinType;
-                cout << "Select your skin type:\n1. Oily skin\n2. Normal skin\n3. Combination skin\n4. Dry-dehydrated skin\n"
-                     << "5. Sensitive skin\n6. Acne-prone skin\n7. Mature skin\n8. Exit" << endl;
+                cout<<"\t\t--------------------------------------------------\n";
+                cout<<"\t\t--------------------------------------------------\n";
+                cout << "\t\t || Select your skin type:\t||" << endl;
+                cout << "\t\t || 1. Oily skin\t\t||"<<endl;
+                cout<<"\t\t || 2. Normal skin\t\t||" << endl;
+                cout << "\t\t || 3. Combination skin\t\t||" << endl;
+                cout << "\t\t || 4. Dry-dehydrated skin\t||" << endl;
+                cout << "\t\t || 5. Sensitive skin\t\t||" << endl;
+                cout << "\t\t || 6. Acne-prone skin\t\t||" << endl;
+                cout << "\t\t || 7. Mature skin\t\t||" << endl;
+                cout << "\t\t || 8. Exit\t\t\t||" << endl;
+                cout<<"\t\t--------------------------------------------------\n";
+                cout<<"\t\t--------------------------------------------------\n";
                 cout << "Enter your choice (1-8): ";
+
                 cin >> skinType;
 
                 string skincare;
@@ -124,7 +150,9 @@ int main() {
                         continue;
                 }
 
-                cout << "You need " << skincare << ". Price: Rs." << price << endl;
+                cout<<"\t\t------------------------------------\n";
+             cout << "\t\t|| You need\t[\t" << skincare <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout<<"\t\t------------------------------------\n";
                 totalAmount += price;
                 break;
             }
@@ -132,11 +160,14 @@ int main() {
             case 3: {
                 int Choice;
                 
-                
-                cout<<"1.Female Make up products\n";
-                cout<<" 1. Eye Products\n";
-                cout<<" 2. Lip Products\n";
-                cout<<" 3. Face Products\n";
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t || *Female Make up products\t||"<<endl;
+                cout<<"\t\t || 1. Eye Products\t\t||"<<endl;
+                cout<<"\t\t || 2. Lip Products\t\t||"<<endl;
+                cout<<"\t\t || 3. Face Products\t\t||"<<endl;
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
                 cin>>Choice;
                 
                 
@@ -163,7 +194,9 @@ int main() {
                         continue;
 
             }
-             cout << "You need " << makeupoptions << ". Price: Rs." << price << endl;
+            cout<<"\t\t------------------------------------\n";
+             cout << "\t\t|| You need\t[\t" << makeupoptions <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout<<"\t\t------------------------------------\n";
                 totalAmount += price;
                 break;
 
@@ -171,8 +204,18 @@ int main() {
                         
 
             case 4: {
-                cout << "Common types of supplements:\n1. Multivitamins\n2. Minerals\n3. Biotin \n"
-                     << "4. Omega\n5. Collagen\n6. Vitamin D3\n7. Exit" << endl;
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
+                cout << "\t\t ||Common types of supplements:\t|| " << endl;
+                cout << "\t\t ||1. Multivitamins\t\t||" << endl;
+                cout << "\t\t ||2. Minerals\t\t\t||" << endl;
+                cout << "\t\t ||3. Biotin\t\t\t||" << endl;
+                cout << "\t\t ||4. Omega\t\t\t||" << endl;
+                cout << "\t\t ||5. Collagen\t\t\t||" << endl;
+                cout << "\t\t ||6. Vitamin D3\t\t||" << endl;
+                cout << "\t\t ||7. Exit\t\t\t||" << endl;
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
 
                 int supplementType;
                 cout << "Enter your choice (1-7): ";
@@ -213,17 +256,31 @@ int main() {
                         continue;
                 }
 
-                cout << "You need " << supplement << ". Price: Rs." << price << endl;
+                cout<<"\t\t------------------------------------\n";
+             cout << "\t\t|| You need\t[\t" << supplement <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout<<"\t\t------------------------------------\n";
                 totalAmount += price;
                 break;
             }
             case 5: {
-                cout << "Available medical equipment:\n1. Syringes\n2. Crutches\n3. Thermometer\n"
-                     << "4. Blood Glucose Monitor\n5. Saniplast \n6. Heating Pad\n7. Knee Cap\n8. Blood Pressure Monitor\n"
-                     << "9. Wheelchair\n10. Exit" << endl;
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
+                cout << "\t\t ||Available medical equipment:\t ||" << endl;
+                cout<<"\t\t ||1. Syringes\t\t\t ||" << endl;
+                cout<<"\t\t ||2. Crutches\t\t\t ||" << endl;
+                cout<<"\t\t ||3. Thermometer\t\t ||" << endl;
+                cout<<"\t\t ||4. Blood Glucose Monitor\t ||" << endl;
+                cout<<"\t\t ||5. Saniplast \t\t ||" << endl;
+                cout<<"\t\t ||6. Heating Pad\t\t ||" << endl;
+                cout<<"\t\t ||7. Knee Cap\t\t\t ||" << endl;
+                cout<<"\t\t ||8. Blood Pressure Monitor\t ||" << endl;
+                cout<<"\t\t ||9. Wheelchair\t\t ||" << endl;
+                cout<<"\t\t ||10. Exit\t\t\t ||" << endl;
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
 
                 int equipmentType;
-                cout << "Enter your choice (1-11): ";
+                cout << "Enter your choice (1-10): ";
                 cin >> equipmentType;
 
                 string equipment;
@@ -273,15 +330,31 @@ int main() {
                         continue;
                 }
 
-                cout << "You need " << equipment << ". Price: Rs." << price << endl;
+                cout<<"\t\t------------------------------------\n";
+             cout << "\t\t|| You need\t[\t" << equipment <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout<<"\t\t------------------------------------\n";
                 totalAmount += price;
                 break;
             }
 
          case 6: { 
-                 cout << "Available snacks:\n1. lays\n2. kurkure\n3. kurleez\n"
-                     << "4. cheetos\n5. dairymilk\n6. oreo\n7. PRINCE BUISCIT\n8. slanty\n"
-                     << "9. ding dong bubble\n10. tuc biscuit\n11. rio biscuit\n12.Exit" << endl;
+                 cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
+                 cout <<"\t\t||Available snacks:\t\t||"<<endl;
+                 cout<<"\t\t ||1. lays\t\t\t||"<<endl;
+                 cout<<"\t\t ||2. kurkure\t\t\t||"<<endl;
+                 cout<<"\t\t ||3. kurleez\t\t\t||"<<endl;
+                 cout<<"\t\t ||4. cheetos\t\t\t||"<<endl;
+                 cout<<"\t\t ||5. dairymilk\t\t\t||"<<endl;
+                 cout<<"\t\t ||6. oreo\t\t\t||"<<endl;
+                 cout<<"\t\t ||7. PRINCE BUISCIT\t\t||"<<endl;
+                 cout<<"\t\t ||8. slanty\t\t\t||"<<endl;
+                 cout<<"\t\t ||9. ding dong bubble\t\t||"<<endl;
+                 cout<<"\t\t ||10. tuc biscuit\t\t||"<<endl;
+                 cout<<"\t\t ||11. rio biscuit\t\t||"<<endl;
+                 cout<<"\t\t ||12.Exit\t\t\t||" << endl;
+                  cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
 
                 int snackType;
                 cout << "Enter your choice (1-12): ";
@@ -341,65 +414,82 @@ int main() {
                         continue;
                 }
 
-                cout << "You need " << snacks << ". Price: Rs." << price << endl;
+                cout<<"\t\t------------------------------------\n";
+             cout << "\t\t|| You need\t[\t" << snacks <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout<<"\t\t------------------------------------\n";
                 totalAmount += price;
                 break;  
  	
  } 
 case 7: {
-                cout << "Common types of baby care items:\n1. Pampers\n2. Cerelac\n3. BF1\n"
-                     << "4. Feeder\n5. Pacifier\n6. Bibs\n7. Baby Oil\n8. Baby Lotion\n9. Baby Shampoo\n10. Baby Powder\n11. Baby Wipes\n12. Exit" << endl;
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
+                cout <<"\t\t ||Common types of baby care items:\t" << endl;
+                cout<<"\t\t ||1. Pampers\t\t\t ||" << endl;
+                cout<<"\t\t ||2. Cerelac\t\t\t ||" << endl;
+                cout<<"\t\t ||3. BF1\t\t\t ||" << endl;
+                cout<<"\t\t ||4. Feeder\t\t\t ||" << endl;
+                cout<<"\t\t ||5. Pacifier\t\t\t ||" << endl;
+                cout<<"\t\t ||6. Bibs\t\t\t ||" << endl;
+                cout<<"\t\t ||7. Baby Oil\t\t\t ||" << endl;
+                cout<<"\t\t ||8. Baby Lotion\t\t ||" << endl;
+                cout<<"\t\t ||9. Baby Shampoo\t\t ||" << endl;
+                cout<<"\t\t ||10. Baby Powder\t\t ||" << endl;
+                cout<<"\t\t ||11. Baby Wipes\t\t ||" << endl;
+                cout<<"\t\t ||12. Exit\t\t\t ||" << endl;
+                cout<<"\t\t------------------------------------\n";
+                cout<<"\t\t------------------------------------\n";
 
                 int babyCare;
                 cout << "Enter your choice (1-12): ";
                 cin >> babyCare;
 
-                string supplement;
+                string supplements;
                 double price;
 
                 switch (babyCare) {
                     case 1:
-                        supplement = "Pampers";
+                        supplements = "Pampers";
                         price = 2600;
                         break;
                     case 2:
-                        supplement = "Cerelac";
+                        supplements = "Cerelac";
                         price = 250;
                         break;
                     case 3:
-                        supplement = "BF1";
+                        supplements = "BF1";
                         price = 1800;
                         break;
                     case 4:
-                        supplement = "Feeder";
+                        supplements = "Feeder";
                         price = 300;
                         break;
                     case 5:
-                        supplement = "Pacifier";
+                        supplements = "Pacifier";
                         price = 270;
                         break;
                     case 6:
-                        supplement = "Bibs";
+                        supplements = "Bibs";
                         price = 700;
                         break;
                     case 7:
-                        supplement = "Baby Oil";
+                        supplements = "Baby Oil";
                         price = 1000;
                         break;
                     case 8:
-                        supplement = "Baby Lotion";
+                        supplements = "Baby Lotion";
                         price = 950;
                         break;
                     case 9:
-                        supplement = "Baby Shampoo";
+                        supplements = "Baby Shampoo";
                         price = 1200;
                         break;
                     case 10:
-                        supplement = "Baby Powder";
+                        supplements = "Baby Powder";
                         price = 800;
                         break;
                     case 11:
-                        supplement = "Baby Wipes";
+                        supplements = "Baby Wipes";
                         price = 550;
                         break;
                     case 12:
@@ -409,14 +499,17 @@ case 7: {
                         continue;
                 }
 
-                cout << "You need " << supplement << ". Price: Rs." << price << endl;
+                cout<<"\t\t------------------------------------\n";
+                cout << "\t\t|| You need\t[\t" << supplements <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+                cout<<"\t\t------------------------------------\n";
                 totalAmount += price;
                 break;
             }
             
 
             case 8: {
-                cout << "Thank you for using the Pharmacy system! Your total amount is: $" << totalAmount << endl;
+                cout<<"\t\t--------------------------------------------------\n";
+                cout << "||\tThank you for using the Pharmacy system!\t\t || \n\t || Your total amount is : RS." << totalAmount <<"\t||"<< endl;
                 return 0;
             }
 
@@ -430,9 +523,10 @@ case 7: {
         cin >> choice;
 
         if (choice != 'y' && choice != 'Y') {
-             cout<<"\t\t--------------------------------------------------\n";
-             cout<<"\t\t--------------------------------------------------\n";
-            cout << "Thank you for using the Pharmacy system! Your total amount is   :  Rs." << totalAmount << endl;
+             cout<<"\t\t-------------------------------------------------------------\n";
+             
+            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t || \n\t\t||Your total amount is :[ RS." << totalAmount <<" ]\t\t\t||"<< endl;
+            cout<<"\t\t-------------------------------------------------------------\n";
             return 0;
         }
 
@@ -441,5 +535,3 @@ case 7: {
 
     return 0;
 }
-
-
