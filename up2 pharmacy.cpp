@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 
 using namespace std;
@@ -97,7 +96,7 @@ int main() {
                 }
 
                 cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[\t" << medicine <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout << "\t\t|| You need\t[ " << medicine <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
                 Bill(price);
                 break;
@@ -162,7 +161,7 @@ int main() {
                 }
 
                 cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[\t" << skincare <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout << "\t\t|| You need\t[ " << skincare <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
                 Bill(price);
                 break;
@@ -206,7 +205,7 @@ int main() {
 
             }
             cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[\t" << makeupoptions <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout << "\t\t|| You need\t[ " << makeupoptions <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
                 Bill(price);
                 break;
@@ -268,7 +267,7 @@ int main() {
                 }
 
                 cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[\t" << supplement <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout << "\t\t|| You need\t[ " << supplement <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
                 Bill(price);
                 break;
@@ -342,7 +341,7 @@ int main() {
                 }
 
                 cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[\t" << equipment <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+             cout << "\t\t|| You need\t[ " << equipment <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
              cout<<"\t\t------------------------------------\n";
                 Bill(price);
                 break;
@@ -351,18 +350,18 @@ int main() {
          case 6: { 
                  cout<<"\t\t------------------------------------\n";
                 cout<<"\t\t------------------------------------\n";
-                 cout <<"\t\t||Available snacks:\t\t||"<<endl;
-                 cout<<"\t\t ||1. lays\t\t\t||"<<endl;
-                 cout<<"\t\t ||2. kurkure\t\t\t||"<<endl;
-                 cout<<"\t\t ||3. kurleez\t\t\t||"<<endl;
-                 cout<<"\t\t ||4. cheetos\t\t\t||"<<endl;
-                 cout<<"\t\t ||5. dairymilk\t\t\t||"<<endl;
-                 cout<<"\t\t ||6. oreo\t\t\t||"<<endl;
-                 cout<<"\t\t ||7. PRINCE BUISCIT\t\t||"<<endl;
-                 cout<<"\t\t ||8. slanty\t\t\t||"<<endl;
-                 cout<<"\t\t ||9. ding dong bubble\t\t||"<<endl;
-                 cout<<"\t\t ||10. tuc biscuit\t\t||"<<endl;
-                 cout<<"\t\t ||11. rio biscuit\t\t||"<<endl;
+                 cout <<"\t\t ||Available snacks:\t\t||"<<endl;
+                 cout<<"\t\t ||1. Lays\t\t\t||"<<endl;
+                 cout<<"\t\t ||2. Kurkure\t\t\t||"<<endl;
+                 cout<<"\t\t ||3. Kurleez\t\t\t||"<<endl;
+                 cout<<"\t\t ||4. Cheetos\t\t\t||"<<endl;
+                 cout<<"\t\t ||5. Dairymilk\t\t\t||"<<endl;
+                 cout<<"\t\t ||6. Oreos\t\t\t||"<<endl;
+                 cout<<"\t\t ||7. Prince biscuit\t\t||"<<endl;
+                 cout<<"\t\t ||8. Slanty\t\t\t||"<<endl;
+                 cout<<"\t\t ||9. Ding dong bubble\t\t||"<<endl;
+                 cout<<"\t\t ||10.Tuc biscuit\t\t||"<<endl;
+                 cout<<"\t\t ||11.Rio biscuit\t\t||"<<endl;
                  cout<<"\t\t ||12.Exit\t\t\t||" << endl;
                   cout<<"\t\t------------------------------------\n";
                 cout<<"\t\t------------------------------------\n";
@@ -376,48 +375,48 @@ int main() {
 
                 switch (snackType) {
                     case 1:
-                        snacks = "LAYS";
-                        price = 50.99;
+                        snacks = "Lays";
+                        price = 50;
                         break;
                     case 2:
-                        snacks = "kurkure";
-                        price = 30.99;
+                        snacks = "Kurkure";
+                        price = 30;
                         break;
                     case 3:
-                        snacks = "kurleez";
-                        price = 30.99;
+                        snacks = "Kurleez";
+                        price = 30;
                         break;
                     case 4:
-                        snacks = "cheetos";
-                        price = 1499.99;
+                        snacks = "Cheetos";
+                        price = 100;
                         break;
                     case 5:
-                        snacks = "dairymilk";
-                        price = 20.99;
+                        snacks = "Dairymilk";
+                        price = 100;
                         break;
                     case 6:
-                        snacks = "oreo";
-                        price = 40.99;
+                        snacks = "Oreo";
+                        price = 40;
                         break;
                     case 7:
-                        snacks = "prince BISCUIT";
-                        price = 3499.99;
+                        snacks = "Prince biscuit";
+                        price = 50;
                         break;
                     case 8:
-                        snacks ="slanty";
-                        price = 799.99;
+                        snacks ="Slanty";
+                        price = 60;
                         break;
                     case 9:
-                        snacks = "ding dong bubble";
-                        price = 2999.99;
+                        snacks = "Ding dong bubble";
+                        price = 5;
                         break;
                     case 10:
-                        snacks = "tuc biscuit";
-                        price = 1599.99;
+                        snacks = "Tuc biscuit";
+                        price = 50;
                         break;
                     case 11:
-                    	snacks ="rio biscuit";
-                    	price = 30.99;
+                    	snacks ="Rio biscuit";
+                    	price = 40;
 
                     case 12:
                         break; // Exit the snacks list 
@@ -427,7 +426,7 @@ int main() {
                 }
 
                 cout<<"\t\t------------------------------------\n";
-                cout << "\t\t|| You need\t[\t" << snacks <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+                cout << "\t\t|| You need\t[ " << snacks <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
                 cout<<"\t\t------------------------------------\n";
                 Bill(price);
                 break;  
@@ -512,7 +511,7 @@ case 7: {
                 }
 
                 cout<<"\t\t------------------------------------\n";
-                cout << "\t\t|| You need\t[\t" << supplements <<"\t]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
+                cout << "\t\t|| You need\t[ " << supplements <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
                 cout<<"\t\t------------------------------------\n";
                 Bill(price);
                 break;
@@ -539,7 +538,7 @@ case 7: {
             if (choice ==1){
                 
             cout<<"\t\t-------------------------------------------------------------\n";
-            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t || \n\t\t||Your total amount is :[ RS." << invoice() <<" ]\t\t\t||"<< endl;
+            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t  \n\t\t||Your total amount is :[ RS." << invoice() <<" ]\t\t\t"<< endl;
             cout<<"\t\t-------------------------------------------------------------\n";
             return 0;
 
@@ -557,10 +556,10 @@ case 7: {
                 Bill(Deliverycharges);
                 
             cout<<"\t\t-------------------------------------------------------------\n";
-            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t || \n\t\t||Your total amount is :[ RS." << invoice() <<"  With Delivery"<<" ] \t "<<"\t\t||"<< endl;
+            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t  \n\t\tYour total amount is :[ RS." << invoice() <<"  With Delivery"<<" ] \t "<<"\t\t"<< endl;
             cout<<"\t\t-------------------------------------------------------------\n";
-            cout<<"\t\t||WILL BE DELIVIRED AT\t||"<<endl;
-            cout<<"\t\t||EMAIL : "<<email<<"\t||"<<"\n"<<"\t\t||Address :"<<address<<"\t||"<<"\n\t\t||Phone Number :"<<phone<<"\t||"<<endl; 
+            cout<<"\t\t||WILL BE DELIVIRED AT\t"<<endl;
+            cout<<"\t\t||EMAIL : "<<email<<"\t"<<"\n"<<"\t\t||Address :"<<address<<"\t"<<"\n\t\t||Phone Number :"<<phone<<"\t"<<endl; 
             cout<<"\t\t-------------------------------------------------------------\n";
             return 0;
             }
