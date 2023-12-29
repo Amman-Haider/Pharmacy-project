@@ -1,572 +1,567 @@
-#include <string>
 #include<iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <chrono>
+
 using namespace std;
 // Global declaration
-double price;
-double totalAmount;
+//double price = 0.0;
+double totalAmount = 0.0;
+//arrays
+string BasicMedsPrescription[] = { "Paracetamol", "Acefyl", "Arinac", "Flagyl", "Gravinate", "Panadol", "Eye Drops" };
+string SkinCarePrescription[] = { "Neutrogena Hydro Boost Gel", "Cosrx Hyaluronic Acid Moisturizer", "Cetaphil Moisturizing Lotion", "Cerave Intense Hydration Cream", "Aveeno Daily Lotion", "Cerave Acne Prone Lotion", "Inkey Face Hyaluronic Acid Lotion" };
+string MakeUpProducts[] = { "Rare Beauty Mascara", "Nyx Lip Oil", "Pixi Blush" };
+string SupplementPrescription[] = { "Abott surbex X, 30 Ct" ,"CaC- 1000 Plus (orange)" ,"Natural Factors Biotin" ,"Blackmores Omega Daily" ,"Webbers Natural Collagen30" ,"Dan-D 50000 IU" };
+string MedicalEquipentType[] = { "Syringes", "Crutches", "Thermometer" , "Blood Glucose Monitors","Saniplast","Heating Pad","Knee Cap","Blood Pressure Monitor", "Wheelchair" };
+string SnackTypes[] = { "Lays" ,"Kurkure" ,"Kurleez" ,"Cheetos" ,"Dairymilk" , "Oreo" ,"Prince biscuit" ,"Slanty" ,"Ding dong bubble" ,"Tuc biscuit","Rio biscuit" };
+string BabyCareProducts[] = { "Pampers" , "Cerelac" , "BF1" ,"Feeder" ,"Pacifier" ,"Bibs" ,"Baby Oil" ,"Baby Lotion" ,"Baby Shampoo" ,"Baby Powder" ,"Baby Wipes" };
 
-void Bill(double price) // void doesn't return anything
-{
-    totalAmount=price+totalAmount;
+//Arrays for different categories
+string categories[] = {
+    "Medicine",
+    "Skincare",
+    "Makeup",
+    "Supplements",
+    "Medical Equipment",
+    "Snacks",
+    "Baby Care",
+    "Exit"
+};
+
+string itemTypes[][12] = {
+    { "Paracetamol", "Acefyl", "Arinac", "Flagyl", "Gravinate", "Panadol", "Eye Drops" },
+    { "Neutrogena Hydro Boost Gel", "Cosrx Hyaluronic Acid Moisturizer", "Cetaphil Moisturizing Lotion", "Cerave Intense Hydration Cream", "Aveeno Daily Lotion", "Cerave Acne Prone Lotion", "Inkey Face Hyaluronic Acid Lotion" },
+    { "Rare Beauty Mascara", "Nyx Lip Oil", "Pixi Blush" },
+    { "Abott surbex X, 30 Ct" ,"CaC- 1000 Plus (orange)" ,"Natural Factors Biotin" ,"Blackmores Omega Daily" ,"Webbers Natural Collagen30" ,"Dan-D 50000 IU" },
+    { "Syringes", "Crutches", "Thermometer" , "Blood Glucose Monitors","Saniplast","Heating Pad","Knee Cap","Blood Pressure Monitor", "Wheelchair" },
+    { "Lays" ,"Kurkure" ,"Kurleez" ,"Cheetos" ,"Dairymilk" , "Oreo" ,"Prince biscuit" ,"Slanty" ,"Ding dong bubble" ,"Tuc biscuit","Rio biscuit" },
+    { "Pampers" , "Cerelac" , "BF1" ,"Feeder" ,"Pacifier" ,"Bibs" ,"Baby Oil" ,"Baby Lotion" ,"Baby Shampoo" ,"Baby Powder" ,"Baby Wipes" }
+};
+
+double itemPrices[][12] = {
+    { 450, 80, 110, 550, 200, 130, 350 },
+    { 1400, 5000, 3000, 6000, 2800, 4500, 2400 },
+    { 5000, 1500, 4000 },
+    { 294, 234, 2590, 4550, 9500, 340 },
+    { 550, 1999.99, 600, 2370, 20, 7000, 570, 3200, 10000 },
+    { 50, 30, 30, 100, 100, 40, 50, 60, 5, 50, 40 },
+    { 2600, 250, 1800, 300, 270, 700, 1000, 950, 1200, 800, 550 }
+};
+
+
+
+
+// we also used switched statement in this code that it is also possible with that 
+
+
+
+
+
+/*void BasicMeds(int symptom, double& totalAmount) {
+    string medicine;
+    switch (symptom) {
+    case 1:
+        medicine = BasicMedsPrescription[0];
+        price = 450;
+        break;
+    case 2:
+        medicine = BasicMedsPrescription[1];
+        price = 80;
+        break;
+    case 3:
+        medicine = BasicMedsPrescription[2];
+        price = 110;
+        break;
+    case 4:
+        medicine = BasicMedsPrescription[3];
+        price = 550;
+        break;
+    case 5:
+        medicine = BasicMedsPrescription[4];
+        price = 200;
+        break;
+    case 6:
+        medicine = BasicMedsPrescription[5];
+        price = 130;
+        break;
+    case 7:
+        medicine = BasicMedsPrescription[6];
+        price = 350;
+        break;
+    case 8:
+        break; // Exit the medicine section
+    default:
+        cout << "Invalid choice!" << endl;
+        return;
+    }
+
+
+    cout << "\t\t------------------------------------\n";
+    cout << "\t\t|| You need\t[ " << medicine << " ]\n" << "\t\t|| Price: \t Rs." << price << "\t\t" << endl;
+    cout << "\t\t------------------------------------\n";
+    totalAmount = totalAmount + price;
 }
-double invoice()//returns total invoice
-{
-    return totalAmount;
+// Function to search for medicine based on keyword
+void SearchMedicine(const string& keyword) {
+    cout << "\t\t------------------------------------\n";
+    cout << "\t\t|| Searching for: " << keyword << " ||\n";
+
+    // Iterate through the medicine array and check for the keyword match
+    for (const string& med : BasicMedsPrescription) {
+        // Case-insensitive search
+        if (med.find(keyword) != string::npos) {
+            cout << "\t\t|| Found: " << med << " ||\n";
+            // Optionally display the price or other details
+        }
+    }
+
+    cout << "\t\t------------------------------------\n";
 }
+void Skin(int skinType, double& totalAmount) {
+    string skincare;
+    switch (skinType) {
+    case 1:
+        skincare = SkinCarePrescription[0];
+        price = 1400;
+        break;
+    case 2:
+        skincare = SkinCarePrescription[1];
+        price = 5000;
+        break;
+    case 3:
+        skincare = SkinCarePrescription[2];
+        price = 3000;
+        break;
+    case 4:
+        skincare = SkinCarePrescription[3];
+        price = 6000;
+        break;
+    case 5:
+        skincare = SkinCarePrescription[4];
+        price = 2800;
+        break;
+    case 6:
+        skincare = SkinCarePrescription[5];
+        price = 4500;
+        break;
+    case 7:
+        skincare = SkinCarePrescription[6];
+        price = 2400;
+        break;
+    case 8:
+        break; // Exit the skincare section
+    default:
+        cout << "Invalid choice!" << endl;
+        return;
+    }
+
+    cout << "\t\t------------------------------------\n";
+    cout << "\t\t|| You need\t[ " << skincare << " ]\n" << "\t\t|| Price: \t Rs." << price << "\t\t" << endl;
+    cout << "\t\t------------------------------------\n";
+}
+
+void Make_up(int mkup, double& totalAmount) {                                                                                             //function for makeup products
+    string makeupoptions;
+    switch (mkup) {
+    case 1:
+        makeupoptions = MakeUpProducts[0];
+        price = 5000;
+        break;
+    case 2:
+        makeupoptions = MakeUpProducts[1];
+        price = 1500;
+        break;
+    case 3:
+        makeupoptions = MakeUpProducts[2];
+        price = 4000;
+        break;
+    case 4:
+        break;
+    default:
+        cout << "Invalid choice!" << endl;
+
+    }
+    cout << "\t\t------------------------------------\n";
+    cout << "\t\t|| You need\t[ " << makeupoptions << " ]\n" << "\t\t|| Price: \t Rs." << price << "\t\t" << endl;
+    cout << "\t\t------------------------------------\n";
+    totalAmount += price;
+}
+
+void Suppls(int supplementType, double& totalAmount) {                                                                                   //function for supplements
+    string supplement;
+
+    switch (supplementType) {
+    case 1:
+        supplement = SupplementPrescription[0];
+        price = 294;
+        break;
+    case 2:
+        supplement = SupplementPrescription[1];
+        price = 234;
+        break;
+    case 3:
+        supplement = SupplementPrescription[2];
+        price = 2590;
+        break;
+    case 4:
+        supplement = SupplementPrescription[3];
+        price = 4550;
+        break;
+    case 5:
+        supplement = SupplementPrescription[4];
+        price = 9500;
+        break;
+    case 6:
+        supplement = SupplementPrescription[5];
+        price = 340;
+        break;
+    case 7:
+        break; // Exit the supplements section
+    default:
+        cout << "Invalid choice!" << endl;
+
+    }
+
+    cout << "\t\t------------------------------------\n";
+    cout << "\t\t|| You need\t[ " << supplement << " ]\n" << "\t\t|| Price: \t Rs." << price << "\t\t" << endl;
+    cout << "\t\t------------------------------------\n";
+    totalAmount += price;
+}
+
+void MedEquip(int equipmentType, double& totalAmount) {                                                                                   //function for medical equipment
+    string equipment;
+
+    switch (equipmentType) {
+    case 1:
+        equipment = MedicalEquipentType[0];
+        price = 550;
+        break;
+    case 2:
+        equipment = MedicalEquipentType[1];
+        price = 1999.99;
+        break;
+    case 3:
+        equipment = MedicalEquipentType[2];
+        price = 600;
+        break;
+    case 4:
+        equipment = MedicalEquipentType[3];
+        price = 2370;
+        break;
+    case 5:
+        equipment = MedicalEquipentType[4];
+        price = 20;
+        break;
+    case 6:
+        equipment = MedicalEquipentType[5];
+        price = 7000;
+        break;
+    case 7:
+        equipment = MedicalEquipentType[6];
+        price = 570;
+        break;
+    case 8:
+        equipment = MedicalEquipentType[7];
+        price = 3200;
+        break;
+    case 9:
+        equipment = MedicalEquipentType[8];
+        price = 10000;
+        break;
+    case 10:
+        break; // Exit the medical equipment section
+    default:
+        cout << "Invalid choice!" << endl;
+    }
+
+    cout << "\t\t------------------------------------\n";
+    cout << "\t\t|| You need\t[ " << equipment << " ]\n" << "\t\t|| Price: \t Rs." << price << "\t\t" << endl;
+    cout << "\t\t------------------------------------\n";
+    totalAmount += price;
+}
+
+void Snack(int snackType, double& totalAmount) {                                                                                          //function for snacks
+
+    string snacks;
+    switch (snackType) {
+    case 1:
+        snacks = SnackTypes[0];
+        price = 50;
+        break;
+    case 2:
+        snacks = SnackTypes[1];
+        price = 30;
+        break;
+    case 3:
+        snacks = SnackTypes[2];
+        price = 30;
+        break;
+    case 4:
+        snacks = SnackTypes[3];
+        price = 100;
+        break;
+    case 5:
+        snacks = SnackTypes[4];
+        price = 100;
+        break;
+    case 6:
+        snacks = SnackTypes[5];
+        price = 40;
+        break;
+    case 7:
+        snacks = SnackTypes[6];
+        price = 50;
+        break;
+    case 8:
+        snacks = SnackTypes[7];
+        price = 60;
+        break;
+    case 9:
+        snacks = SnackTypes[8];
+        price = 5;
+        break;
+    case 10:
+        snacks = SnackTypes[9];
+        price = 50;
+        break;
+    case 11:
+        snacks = SnackTypes[9];
+        price = 40;
+
+    case 12:
+        break; // Exit the snacks list 
+    default:
+        cout << "Invalid choice!" << endl;
+    }
+
+    cout << "\t\t------------------------------------\n";
+    cout << "\t\t|| You need\t[ " << snacks << " ]\n" << "\t\t|| Price: \t Rs." << price << "\t\t" << endl;
+    cout << "\t\t------------------------------------\n";
+    totalAmount += price;
+}
+
+void Babies(int babyCare, double& totalAmount) {                                                                                          //function for baby items
+
+    string babyStuff;
+
+    switch (babyCare) {
+    case 1:
+        babyStuff = BabyCareProducts[0];
+        price = 2600;
+        break;
+    case 2:
+        babyStuff = BabyCareProducts[1];
+        price = 250;
+        break;
+    case 3:
+        babyStuff = BabyCareProducts[2];
+        price = 1800;
+        break;
+    case 4:
+        babyStuff = BabyCareProducts[3];
+        price = 300;
+        break;
+    case 5:
+        babyStuff = BabyCareProducts[4];
+        price = 270;
+        break;
+    case 6:
+        babyStuff = BabyCareProducts[5];
+        price = 700;
+        break;
+    case 7:
+        babyStuff = BabyCareProducts[6];
+        price = 1000;
+        break;
+    case 8:
+        babyStuff = BabyCareProducts[7];
+        price = 950;
+        break;
+    case 9:
+        babyStuff = BabyCareProducts[8];
+        price = 1200;
+        break;
+    case 10:
+        babyStuff = BabyCareProducts[9];
+        price = 800;
+        break;
+    case 11:
+        babyStuff = BabyCareProducts[10];
+        price = 550;
+        break;
+    case 12:
+        break; // Exit the supplements section
+    default:
+        cout << "Invalid choice!" << endl;
+    }
+
+    cout << "\t\t------------------------------------\n";
+    cout << "\t\t|| You need\t[ " << babyStuff << " ]\n" << "\t\t|| Price: \t Rs." << price << "\t\t" << endl;
+    cout << "\t\t------------------------------------\n";
+    totalAmount += price;
+}
+*/
+void DeliveryDetails() {
+    string email, contactNumber, address;
+    cout << "  Please provide your delivery details:" << endl;
+    cout << "  Email address: ";
+    cin >> email;
+    cout << "  Contact number: ";
+    cin >> contactNumber;
+    cout << "  House address: ";
+    cin.ignore(); // Ignore the newline character in the input buffer
+    getline(cin, address);
+
+    // Calculate total amount including delivery charges
+    double totalAmountWithDelivery = totalAmount + 150.0;
+
+    cout << "\n\t\t----------------------------------------------\n";
+    cout << "\t\t|| Total Amount (including delivery): Rs. " << totalAmountWithDelivery << "\t\t" << endl;
+    cout << "\t\t------------------------------------------------\n";
+    cout << "\n  Thank you for your order! It will be delivered to:\n";
+    cout << "  Email: " << email << endl;
+    cout << "  Contact Number: " << contactNumber << endl;
+    cout << "  Address: " << address << endl;
+    cout << "  Estimated delivery time: 2-3 business HOURS.\n";
+    srand(static_cast<long int>(time(NULL)));
+    cout << "  Your tracking number is: "<<rand() << "\n\n ";
+}
+
+void Pickup() {
+    cout << "\n\t\t----------------------------------------------\n";
+    cout << "\t\t|| Total Amount: Rs. " << totalAmount << "\t\t" << endl;
+    cout << "\t\t------------------------------------------------\n";
+    cout << "\n  Thank you for your order! Please pick it up at our store.\n";
+}
+void ProcessOrder(double& totalAmount) {
+    char deliveryChoice, paymentOption;
+    string cardHolderName, cardNumber, CCV;
+    if (totalAmount > 0) {
+        cout << "  Would you like pickup (P) or delivery (D)? ";
+        cin >> deliveryChoice;
+        cout << endl;
+        while (deliveryChoice != 'D' && deliveryChoice != 'd' && deliveryChoice != 'P' && deliveryChoice != 'p') {
+            cout << "  Invalid choice! Please enter 'P' for pickup or 'D' for delivery: ";
+            cin >> deliveryChoice;
+        }
+
+        if (deliveryChoice == 'D' || deliveryChoice == 'd') {
+            cout << "  Payment options:" << endl;
+            cout << "  Online (O)" << endl;
+            cout << "  Cash on delivery (C)" << endl;
+            cin >> paymentOption;
+            if (paymentOption == 'o' || paymentOption == 'O') {
+                cout << endl;
+                cout << "  Card holder name: ";
+                cin >> cardHolderName;
+                cout << "  Card number: ";
+                cin >> cardNumber;
+                cout << "  CCV: ";
+                cin >> CCV;
+                DeliveryDetails();
+            }
+            else if (paymentOption == 'C' || paymentOption == 'c') {
+                DeliveryDetails();
+            }
+            
+        }
+        else if (deliveryChoice == 'P' || deliveryChoice == 'p') {
+            Pickup();
+        }
+    }
+    else {
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout <<"  Your cart is empty, thank you for visiting." << endl;
+        cout << endl;
+        cout << endl;
+    }
+}
+
+
+
+
+void DisplayCategories() {
+    // Display categories dynamically from the array
+    cout << "\n\n\t\t\t  Pharmacy Management System \n";
+    cout << "\t\t============================================\n\n";
+    cout << "\t\t--------------------------------------------\n";
+    cout << "\t\t||\tWelcome to the Pharmacy!\t  \n";
+    cout << "\t\t||\tWhat are you looking for?\t  \n";
+
+    for (int i = 0; i < 8; ++i) {
+        cout << "\t\t||\t" << i + 1 << ". " << categories[i] << "\t\t\t  \n";
+    }
+
+    cout << "\t\t--------------------------------------------\n";
+    cout << "\t\t--------------------------------------------\n";
+    cout << "  Enter your choice (1-8): ";
+}
+
+void DisplayItems(int choice, bool& exitRequested, double& totalAmount) {
+    while (!exitRequested) {
+        cout << "\t\t--------------------------------------------\n";
+        cout << "\t\t--------------------------------------------\n";
+        cout << "\t\t||\tAvailable " << categories[choice - 1] << ":\t\t  " << endl;
+
+        for (int i = 0; i < 12; ++i) {
+            if (itemTypes[choice - 1][i] != "") {
+                cout << "\t\t||\t" << i + 1 << ". " << itemTypes[choice - 1][i] << "\t\t\t\t" << itemPrices[choice-1][i] << endl;
+
+            }
+        }
+
+        cout << "\t\t||\t" << 0 << ". Back to categories\t  " << endl;
+        cout << "\t\t--------------------------------------------\n";
+        cout << "\t\t--------------------------------------------\n";
+        cout << "  Enter your choice: ";
+
+        int subChoice;
+        cin >> subChoice;
+
+        if (subChoice == 0) {
+            exitRequested = true;
+        }
+        else if (subChoice < 1 || subChoice > 12) {
+            cout << "Invalid choice!" << endl;
+        }
+        else {
+            // Handle the selected subcategory or item (you can use switch cases or function calls here)
+            if (subChoice != 12) {
+                cout << "You selected: " << itemTypes[choice - 1][subChoice - 1] << endl;
+                totalAmount += itemPrices[choice - 1][subChoice - 1];
+                // Add logic to process the selection here
+            }
+        }
+    }
+}
+
+bool WelcomeScreen(double& totalAmount) {
+    int choice;
+    bool exitRequested = false;
+    DisplayCategories();
+    cin >> choice;
+
+    if (choice < 1 || choice > 8) {
+        cout << "Invalid choice!" << endl;
+        return WelcomeScreen(totalAmount); // Recursively call itself to prompt for a valid choice
+    }
+
+    if (choice != 8) {
+        DisplayItems(choice, exitRequested, totalAmount);
+    }
+
+    return choice != 8; // Return false only if the user selects the Exit option
+}
+
 
 int main() {
 
-    do {
-        int category;
-         cout<<"\n\n\t\t\t    Pharmacy Management System \n";
-	    cout<<"\t\t==================================================\n\n";
-	    cout<<"\t\t--------------------------------------------------\n";
-        cout << "\t\t||\tWelcome to the Pharmacy!\t ||\n" ;
-        cout << "\t\t||\tWhat are you looking for?\t ||\n" ;
-        cout << "\t\t||\t1. Medicine\t\t\t ||\n" ;
-        cout << "\t\t||\t2. Skincare\t\t\t ||\n" ;
-        cout << "\t\t||\t3. Makeup\t\t\t ||\n" ;
-        cout << "\t\t||\t4. Supplements\t\t\t ||\n" ;
-        cout << "\t\t||\t5. Medical Equipment\t\t ||\n" ;
-        cout << "\t\t||\t6. Snacks\t\t\t ||\n" ;
-        cout << "\t\t||\t7. Baby Care\t\t\t ||\n" ;
-        cout << "\t\t||\t8. Exit\t\t\t\t ||\n" ;
-        cout<<"\t\t--------------------------------------------------\n";
-        cout<<"\t\t--------------------------------------------------\n";
-        cout << "Enter your choice (1-8): ";
-       
-        cin >> category;
+    while (WelcomeScreen(totalAmount)) {}
 
-        switch (category) {
-                case 1: {
-                int symptom;
-                cout<<"\t\t--------------------------------------------------\n";
-                cout<<"\t\t--------------------------------------------------\n";
-                cout << "\t\t||\tSelect the symptoms:"<<endl;
-                cout << "\t\t||\t1. Fever\t\t\t ||"<< endl;
-                cout << "\t\t||\t2. Cough\t\t\t ||"<< endl;
-                cout << "\t\t||\t3. Flu\t\t\t\t ||"<< endl;
-                cout << "\t\t||\t4. Upset Stomach\t\t ||"<< endl;
-                cout << "\t\t||\t5. Vomitting\t\t\t ||"<< endl;
-                cout << "\t\t||\t6. Pain\t\t\t\t ||"<< endl;
-                cout << "\t\t||\t7. Eye Infection\t\t ||"<< endl;
-                cout << "\t\t||\t8. Exit\t\t\t\t ||" <<endl;
-                cout<<"\t\t--------------------------------------------------\n";
-                cout<<"\t\t--------------------------------------------------\n";
-                cout << "\tEnter your choice (1-8): ";
-                cin >> symptom;
-
-                string medicine;
-                double price;
-
-                switch (symptom) {
-                    case 1:
-                        medicine = "Paracetamol";
-                        price = 450;
-                        break;
-                    case 2:
-                        medicine = "Acefyl";
-                        price = 80;
-                        break;
-                    case 3:
-                        medicine = "Arinac";
-                        price = 110;
-                        break;
-                    case 4:
-                        medicine = "Flagyl";
-                        price = 550;
-                        break;
-                    case 5:
-                        medicine = "Gravinate";
-                        price = 200;
-                        break;
-                    case 6:
-                        medicine = "Panadol";
-                        price = 130;
-                        break;
-                    case 7:
-                        medicine = "Eye drops";
-                        price = 350;
-                        break;
-                    case 8:
-                        break; // Exit the medicine section
-                    default:
-                        cout << "Invalid choice!" << endl;
-                        continue;
-                }
-
-                cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[ " << medicine <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
-             cout<<"\t\t------------------------------------\n";
-                Bill(price);
-                break;
-            }
-        
-            case 2: {
-                int skinType;
-                cout<<"\t\t--------------------------------------------------\n";
-                cout<<"\t\t--------------------------------------------------\n";
-                cout << "\t\t || Select your skin type:\t||" << endl;
-                cout << "\t\t || 1. Oily skin\t\t||"<<endl;
-                cout<<"\t\t || 2. Normal skin\t\t||" << endl;
-                cout << "\t\t || 3. Combination skin\t\t||" << endl;
-                cout << "\t\t || 4. Dry-dehydrated skin\t||" << endl;
-                cout << "\t\t || 5. Sensitive skin\t\t||" << endl;
-                cout << "\t\t || 6. Acne-prone skin\t\t||" << endl;
-                cout << "\t\t || 7. Mature skin\t\t||" << endl;
-                cout << "\t\t || 8. Exit\t\t\t||" << endl;
-                cout<<"\t\t--------------------------------------------------\n";
-                cout<<"\t\t--------------------------------------------------\n";
-                cout << "Enter your choice (1-8): ";
-
-                cin >> skinType;
-
-                string skincare;
-                double price;
-
-                switch (skinType) {
-                    case 1:
-                        skincare = "Neutrogena Hydro Boost Gel";
-                        price = 1400;
-                        break;
-                    case 2:
-                        skincare = "cosrx hyaluronic acid moisturizer";
-                        price = 5000;
-                        break;
-                    case 3:
-                        skincare = "Cetaphil moisturizing lotion";
-                        price = 3000;
-                        break;
-                    case 4:
-                        skincare = "Cerave intense hydration cream";
-                        price = 6000;
-                        break;
-                    case 5:
-                        skincare = "aveeno daily lotion";
-                        price = 2800;
-                        break;
-                    case 6:
-                        skincare = "Cerave acne prone lotion";
-                        price = 4500;
-                        break;
-                    case 7:
-                        skincare = "inkey face hyaluronic acid lotion";
-                        price = 2400;
-                        break;
-                    case 8:
-                        break; // Exit the skincare section
-                    default:
-                        cout << "Invalid choice!" << endl;
-                        continue;
-                }
-
-                cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[ " << skincare <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
-             cout<<"\t\t------------------------------------\n";
-                Bill(price);
-                break;
-            }
-        
-            case 3: {
-                int Choice;
-                
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t || *Female Make up products\t||"<<endl;
-                cout<<"\t\t || 1. Eye Products\t\t||"<<endl;
-                cout<<"\t\t || 2. Lip Products\t\t||"<<endl;
-                cout<<"\t\t || 3. Face Products\t\t||"<<endl;
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-                cin>>Choice;
-                
-                
-
-                string makeupoptions;
-                double price;
-                
-
-                switch (Choice){
-                    case 1:
-                    makeupoptions = "Rare beauty mascara";
-                    price = 5000;
-                    break;
-                    case 2:
-                    makeupoptions = "nyx lip oil";
-                    price = 1500;
-                    break;
-                    case 3:
-                    makeupoptions = "pixi blush";
-                    price = 4000;
-                    break;
-                    default:
-                        cout << "Invalid choice!" << endl;
-                        continue;
-
-            }
-            cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[ " << makeupoptions <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
-             cout<<"\t\t------------------------------------\n";
-                Bill(price);
-                break;
-
-    }                  
-                        
-
-            case 4: {
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-                cout << "\t\t ||Common types of supplements:\t|| " << endl;
-                cout << "\t\t ||1. Multivitamins\t\t||" << endl;
-                cout << "\t\t ||2. Minerals\t\t\t||" << endl;
-                cout << "\t\t ||3. Biotin\t\t\t||" << endl;
-                cout << "\t\t ||4. Omega\t\t\t||" << endl;
-                cout << "\t\t ||5. Collagen\t\t\t||" << endl;
-                cout << "\t\t ||6. Vitamin D3\t\t||" << endl;
-                cout << "\t\t ||7. Exit\t\t\t||" << endl;
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-
-                int supplementType;
-                cout << "Enter your choice (1-7): ";
-                cin >> supplementType;
-
-                string supplement;
-                double price;
-
-                switch (supplementType) {
-                    case 1:
-                        supplement = "Abott surbex X, 30 Ct";
-                        price = 294;
-                        break;
-                    case 2:
-                        supplement = "CaC- 1000 Plus (orange)";
-                        price = 234;
-                        break;
-                    case 3:
-                        supplement = "Natural Factors Biotin";
-                        price = 2590;
-                        break;
-                    case 4:
-                        supplement = "Blackmores Omega Daily";
-                        price = 4550;
-                        break;
-                    case 5:
-                        supplement = "Webbers Natural Collagen30";
-                        price = 9500;
-                        break;
-                    case 6:
-                        supplement = "Dan-D 50000 IU";
-                        price = 340;
-                        break;
-                    case 7:
-                        break; // Exit the supplements section
-                    default:
-                        cout << "Invalid choice!" << endl;
-                        continue;
-                }
-
-                cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[ " << supplement <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
-             cout<<"\t\t------------------------------------\n";
-                Bill(price);
-                break;
-            }
-            case 5: {
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-                cout << "\t\t ||Available medical equipment:\t ||" << endl;
-                cout<<"\t\t ||1. Syringes\t\t\t ||" << endl;
-                cout<<"\t\t ||2. Crutches\t\t\t ||" << endl;
-                cout<<"\t\t ||3. Thermometer\t\t ||" << endl;
-                cout<<"\t\t ||4. Blood Glucose Monitor\t ||" << endl;
-                cout<<"\t\t ||5. Saniplast \t\t ||" << endl;
-                cout<<"\t\t ||6. Heating Pad\t\t ||" << endl;
-                cout<<"\t\t ||7. Knee Cap\t\t\t ||" << endl;
-                cout<<"\t\t ||8. Blood Pressure Monitor\t ||" << endl;
-                cout<<"\t\t ||9. Wheelchair\t\t ||" << endl;
-                cout<<"\t\t ||10. Exit\t\t\t ||" << endl;
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-
-                int equipmentType;
-                cout << "Enter your choice (1-10): ";
-                cin >> equipmentType;
-
-                string equipment;
-                double price;
-
-                switch (equipmentType) {
-                    case 1:
-                        equipment = "Syringes";
-                        price = 550;
-                        break;
-                    case 2:
-                        equipment = "Crutches";
-                        price = 1999.99;
-                        break;
-                    case 3:
-                        equipment = "Thermometer";
-                        price = 600;
-                        break;
-                    case 4:
-                        equipment = "Blood Glucose Monitors";
-                        price = 2370;
-                        break;
-                    case 5:
-                        equipment = "Saniplast";
-                        price = 20;
-                        break;
-                    case 6:
-                        equipment = "Heating Pad";
-                        price = 7000;
-                        break;
-                    case 7:
-                        equipment = "Knee Cap";
-                        price = 570;
-                        break;
-                    case 8:
-                        equipment = "Blood Pressure Monitor";
-                        price = 3200;
-                        break;
-                    case 9:
-                        equipment = "Wheelchair";
-                        price = 10000;
-                        break;
-                    case 10:
-                        break; // Exit the medical equipment section
-                    default:
-                        cout << "Invalid choice!" << endl;
-                        continue;
-                }
-
-                cout<<"\t\t------------------------------------\n";
-             cout << "\t\t|| You need\t[ " << equipment <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
-             cout<<"\t\t------------------------------------\n";
-                Bill(price);
-                break;
-            }
-
-         case 6: { 
-                 cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-                 cout <<"\t\t ||Available snacks:\t\t||"<<endl;
-                 cout<<"\t\t ||1. Lays\t\t\t||"<<endl;
-                 cout<<"\t\t ||2. Kurkure\t\t\t||"<<endl;
-                 cout<<"\t\t ||3. Kurleez\t\t\t||"<<endl;
-                 cout<<"\t\t ||4. Cheetos\t\t\t||"<<endl;
-                 cout<<"\t\t ||5. Dairymilk\t\t\t||"<<endl;
-                 cout<<"\t\t ||6. Oreos\t\t\t||"<<endl;
-                 cout<<"\t\t ||7. Prince biscuit\t\t||"<<endl;
-                 cout<<"\t\t ||8. Slanty\t\t\t||"<<endl;
-                 cout<<"\t\t ||9. Ding dong bubble\t\t||"<<endl;
-                 cout<<"\t\t ||10.Tuc biscuit\t\t||"<<endl;
-                 cout<<"\t\t ||11.Rio biscuit\t\t||"<<endl;
-                 cout<<"\t\t ||12.Exit\t\t\t||" << endl;
-                  cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-
-                int snackType;
-                cout << "Enter your choice (1-12): ";
-                cin >> snackType;
-
-                string snacks;
-                double price;
-
-                switch (snackType) {
-                    case 1:
-                        snacks = "Lays";
-                        price = 50;
-                        break;
-                    case 2:
-                        snacks = "Kurkure";
-                        price = 30;
-                        break;
-                    case 3:
-                        snacks = "Kurleez";
-                        price = 30;
-                        break;
-                    case 4:
-                        snacks = "Cheetos";
-                        price = 100;
-                        break;
-                    case 5:
-                        snacks = "Dairymilk";
-                        price = 100;
-                        break;
-                    case 6:
-                        snacks = "Oreo";
-                        price = 40;
-                        break;
-                    case 7:
-                        snacks = "Prince biscuit";
-                        price = 50;
-                        break;
-                    case 8:
-                        snacks ="Slanty";
-                        price = 60;
-                        break;
-                    case 9:
-                        snacks = "Ding dong bubble";
-                        price = 5;
-                        break;
-                    case 10:
-                        snacks = "Tuc biscuit";
-                        price = 50;
-                        break;
-                    case 11:
-                    	snacks ="Rio biscuit";
-                    	price = 40;
-
-                    case 12:
-                        break; // Exit the snacks list 
-                    default:
-                        cout << "Invalid choice!" << endl;
-                        continue;
-                }
-
-                cout<<"\t\t------------------------------------\n";
-                cout << "\t\t|| You need\t[ " << snacks <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
-                cout<<"\t\t------------------------------------\n";
-                Bill(price);
-                break;  
- 	
- } 
-case 7: {
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-                cout <<"\t\t ||Common types of baby care items:\t" << endl;
-                cout<<"\t\t ||1. Pampers\t\t\t ||" << endl;
-                cout<<"\t\t ||2. Cerelac\t\t\t ||" << endl;
-                cout<<"\t\t ||3. BF1\t\t\t ||" << endl;
-                cout<<"\t\t ||4. Feeder\t\t\t ||" << endl;
-                cout<<"\t\t ||5. Pacifier\t\t\t ||" << endl;
-                cout<<"\t\t ||6. Bibs\t\t\t ||" << endl;
-                cout<<"\t\t ||7. Baby Oil\t\t\t ||" << endl;
-                cout<<"\t\t ||8. Baby Lotion\t\t ||" << endl;
-                cout<<"\t\t ||9. Baby Shampoo\t\t ||" << endl;
-                cout<<"\t\t ||10. Baby Powder\t\t ||" << endl;
-                cout<<"\t\t ||11. Baby Wipes\t\t ||" << endl;
-                cout<<"\t\t ||12. Exit\t\t\t ||" << endl;
-                cout<<"\t\t------------------------------------\n";
-                cout<<"\t\t------------------------------------\n";
-
-                int babyCare;
-                cout << "Enter your choice (1-12): ";
-                cin >> babyCare;
-
-                string supplements;
-                double price;
-
-                switch (babyCare) {
-                    case 1:
-                        supplements = "Pampers";
-                        price = 2600;
-                        break;
-                    case 2:
-                        supplements = "Cerelac";
-                        price = 250;
-                        break;
-                    case 3:
-                        supplements = "BF1";
-                        price = 1800;
-                        break;
-                    case 4:
-                        supplements = "Feeder";
-                        price = 300;
-                        break;
-                    case 5:
-                        supplements = "Pacifier";
-                        price = 270;
-                        break;
-                    case 6:
-                        supplements = "Bibs";
-                        price = 700;
-                        break;
-                    case 7:
-                        supplements = "Baby Oil";
-                        price = 1000;
-                        break;
-                    case 8:
-                        supplements = "Baby Lotion";
-                        price = 950;
-                        break;
-                    case 9:
-                        supplements = "Baby Shampoo";
-                        price = 1200;
-                        break;
-                    case 10:
-                        supplements = "Baby Powder";
-                        price = 800;
-                        break;
-                    case 11:
-                        supplements = "Baby Wipes";
-                        price = 550;
-                        break;
-                    case 12:
-                        break; // Exit the supplements section
-                    default:
-                        cout << "Invalid choice!" << endl;
-                        continue;
-                }
-
-                cout<<"\t\t------------------------------------\n";
-                cout << "\t\t|| You need\t[ " << supplements <<" ]\n"<<"\t\t|| Price: \t Rs." << price << "\t\t"<< endl;
-                cout<<"\t\t------------------------------------\n";
-                Bill(price);
-                break;
-            }
-            
-
-            default:
-                cout << "Invalid choice!" << endl;
-                continue;
-        }
-
-        char choice;
-        
-        cout << "Do you want anything else? (y/n): ";
-        cin >> choice;
-
-        if (choice != 'y' && choice != 'Y') {
-            cout<<"Type of customer"<<endl ;
-            cout<<"1. Pickup"<<endl ;
-            cout<<"2. Deliver to address"<<endl;
-        int choice;
-        cin >> choice;
-        string email,address,phone;
-            if (choice ==1){
-                
-            cout<<"\t\t-------------------------------------------------------------\n";
-            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t  \n\t\t||Your total amount is :[ RS." << invoice() <<" ]\t\t\t"<< endl;
-            cout<<"\t\t-------------------------------------------------------------\n";
-            return 0;
-
-            }
-            else if(choice==2)
-            {   
-                cout<<"Enter your email :";
-                cin>>email;
-                cout<<"Enter your Address :";
-                cin>>address;
-                cout<<"Enter your Phone number :";
-                cin>>phone;
-                
-                double Deliverycharges=150;
-                Bill(Deliverycharges);
-                
-            cout<<"\t\t-------------------------------------------------------------\n";
-            cout <<"\t\t||Thank you for using the Pharmacy system!\t\t  \n\t\tYour total amount is :[ RS." << invoice() <<"  With Delivery"<<" ] \t "<<"\t\t"<< endl;
-            cout<<"\t\t-------------------------------------------------------------\n";
-            cout<<"\t\t||WILL BE DELIVIRED AT\t"<<endl;
-            cout<<"\t\t||EMAIL : "<<email<<"\t"<<"\n"<<"\t\t||Address :"<<address<<"\t"<<"\n\t\t||Phone Number :"<<phone<<"\t"<<endl; 
-            cout<<"\t\t-------------------------------------------------------------\n";
-            return 0;
-            }
-        }
-
-     }
-     while (true);
+    ProcessOrder(totalAmount);
 
     return 0;
 }
